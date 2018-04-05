@@ -10,4 +10,10 @@ module Registration
       end
     end
 
+
+    def create_family(role)
+      family = Family.create(name: "#{self.last_name}'s Family")
+      Role.create(family: family, user: self, name: role)
+    end
+
 end

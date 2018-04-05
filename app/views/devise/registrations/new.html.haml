@@ -1,21 +1,16 @@
 %h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
+
+  .form-inputs
+    = f.input :first_name, required: true, autofocus: true
+    = f.input :last_name, required: true, autofocus: true
+    = f.input :email, required: true
+    = f.input :password, required: true
+    = f.input :password_confirmation, required: true
+    = f.input :role, as: :radio_buttons, collection: Role.names.to_a, value_method: :first, required: true, checked: Role.names.to_a.first
+
+  .form-actions
+    = f.button :submit, "Sign up", class: 'btn btn-success'
+
 = render "devise/shared/links"
