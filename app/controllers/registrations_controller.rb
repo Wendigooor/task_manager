@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    resource.create_family(params[:user][:role]) if resource.persisted?
+    resource.create_family(params[:family]) if resource.persisted?
   end
 
   protected

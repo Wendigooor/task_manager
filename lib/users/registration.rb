@@ -11,9 +11,15 @@ module Registration
     end
 
 
-    def create_family(role)
-      family = Family.create(name: "#{self.last_name}'s Family")
-      Role.create(family: family, user: self, name: role)
+    def create_family(family_params)
+      family =
+        if family_params[:id].present?
+          Family.find(family_params[:id])
+        else
+          Family.create(name: family_params[:name])
+        end
+
+      Role.create(family: family, user: self, name: :admin)
     end
 
 end
