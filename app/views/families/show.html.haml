@@ -1,0 +1,24 @@
+%h3
+  Family
+  %i= @family.name
+
+%h3 Members
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th First Name
+      %th Last Name
+      %th Email
+      %th Role
+      %th{:colspan => "3"}
+  %tbody
+    - @family.users.each do |user|
+      %tr
+        %th= user.first_name
+        %th= user.last_name
+        %th= user.email
+        %th= @family.roles.find {|r| r.user_id == user.id }.name
+
+
+= link_to "New Member", new_family_member_path(@family)

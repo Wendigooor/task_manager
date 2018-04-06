@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem "haml-rails", "~> 1.0"
 gem 'simple_form'
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-facebook'
 gem 'figaro'
 

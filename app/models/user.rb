@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Registration
 
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable,
          omniauth_providers: [:facebook]

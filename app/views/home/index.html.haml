@@ -2,6 +2,6 @@
 
 %h1 Families
 
-= @families.each_with_index do |family, index|
+- @families.each_with_index do |family, index|
   #{index + 1}.
-  = family.name
+  = link_to family.name, family_path(family)
