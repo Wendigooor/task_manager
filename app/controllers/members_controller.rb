@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    Role.find_by(family: @family, user: params[:id]).destroy
+    Registration.remove_member_from_family(params[:user_id], @family)
     redirect_to @family
   end
 

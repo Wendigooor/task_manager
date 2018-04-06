@@ -1,7 +1,5 @@
-
-
 %h1 Families
 
-- @families.each_with_index do |family, index|
+- current_user.families.each_with_index do |family, index|
   #{index + 1}.
   = link_to family.name, family_path(family)
