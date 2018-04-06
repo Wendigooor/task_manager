@@ -10,6 +10,10 @@ class MembersController < ApplicationController
     redirect_to @family
   end
 
+  def destroy
+    Role.find_by(family: @family, user: params[:id]).destroy
+    redirect_to @family
+  end
 
 private
 

@@ -19,6 +19,8 @@
         %th= user.last_name
         %th= user.email
         %th= @family.roles.find {|r| r.user_id == user.id }.name
+        %th
+          = link_to 'Remove', family_member_path(@family, user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
 
 
 = link_to "New Member", new_family_member_path(@family)
