@@ -34,12 +34,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem "haml-rails", "~> 1.0"
+gem 'simple_form'
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-facebook'
 gem 'figaro'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'cancancan', '~> 2.0'
 
 
 group :development, :test do
@@ -49,6 +53,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'letter_opener'
+  gem 'pry'
 end
 
 group :development do
