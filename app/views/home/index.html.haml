@@ -1,5 +1,8 @@
-%h1 Families
+%h3 Families
 
 - current_user.families.each_with_index do |family, index|
   #{index + 1}.
   = link_to family.name, family_path(family)
+
+%hr/
+

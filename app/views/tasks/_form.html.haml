@@ -1,0 +1,8 @@
+= simple_form_for @task, url: family_tasks_path do |f|
+  - if @task.errors.any?
+    .alert.alert-danger
+      - @task.errors.full_messages.each do |msg|
+        %li= msg
+  = f.input :description
+  / = f.input :assignee_id, collection: @family.users, value_method: :id, label_method: :first_name, include_blank: false
+  = f.button :submit

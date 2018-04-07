@@ -1,7 +1,4 @@
 class FamiliesController < ApplicationController
-
-  def show
-    @family = Family.find(params[:id])
-  end
+  load_and_authorize_resource
 
 end
