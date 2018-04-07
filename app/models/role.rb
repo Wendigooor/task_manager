@@ -1,8 +1,14 @@
 class Role < ApplicationRecord
-  belongs_to :family
-  belongs_to :user
+  has_and_belongs_to_many :users, :join_table => :users_roles
 
-  validates :name, presence: true
+  belongs_to :resource,
+             :polymorphic => true,
+             :optional => true
 
-  enum name: %w(admin user)
+
+  validates :resource_type,
+            :inclusion => { :in => Rolify.resource_types },
+            :allow_nil => true
+
+  scopify
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406083851) do
+ActiveRecord::Schema.define(version: 20180406124312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,23 +22,13 @@ ActiveRecord::Schema.define(version: 20180406083851) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer "name"
-    t.bigint "family_id"
-    t.bigint "user_id"
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["family_id"], name: "index_roles_on_family_id"
-    t.index ["user_id"], name: "index_roles_on_user_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.integer "creator_id"
-    t.integer "assignee_id"
-    t.boolean "need_estimation"
-    t.time "estimation"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +68,12 @@ ActiveRecord::Schema.define(version: 20180406083851) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "roles", "families"
-  add_foreign_key "roles", "users"
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
 end
