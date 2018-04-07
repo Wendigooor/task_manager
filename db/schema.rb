@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406124312) do
+ActiveRecord::Schema.define(version: 20180407064654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 20180406124312) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "assignee_id"
+    t.bigint "family_id"
+    t.time "estimate"
+    t.integer "state"
+    t.boolean "public", default: true
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["author_id"], name: "index_tasks_on_author_id"
+    t.index ["family_id"], name: "index_tasks_on_family_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,4 +91,6 @@ ActiveRecord::Schema.define(version: 20180406124312) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "tasks", "users", column: "assignee_id"
+  add_foreign_key "tasks", "users", column: "author_id"
 end
