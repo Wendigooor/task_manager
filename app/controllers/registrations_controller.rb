@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    resource.create_family(params[:family]) if resource.persisted?
+    FamilyCreatorService.new(resource, params[:family]).perform
   end
 
   protected

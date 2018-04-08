@@ -1,23 +1,15 @@
-%h3 #{@family.name} Family Tasks
+%h3
+  #{@family.name}
+  = t('.title')
 
 %h4 Author Tasks
 
-/ %table.table.table-striped
-/   %thead
-/     %tr
-/       %th Description
-/       %th Assignee
-/       %th State
-/       %th{:colspan => "3"}
-/   %tbody
 .row
   - current_user.author_tasks.each do |task|
     .task.col-md-2
       = task.description.truncate(20)
       = task.assignee&.first_name
       = task.state
-      = link_to 'Change Status', root_path
-
 
 %hr/
 
@@ -28,7 +20,7 @@
       = user.email
 
 %hr/
-%p= link_to "New Task", new_family_task_path(@family), class: 'btn btn-sm btn-primary'
-%p= link_to "Back to Family", family_path(@family), class: 'btn btn-sm btn-success'
-%p= link_to "Dashboard", root_path, class: 'btn btn-sm btn-success'
+%p= link_to t('.new_task'), new_family_task_path(@family), class: 'btn btn-sm btn-primary'
+%p= link_to t('.back_to_family'), family_path(@family), class: 'btn btn-sm btn-success'
+%p= link_to t('.dashboard'), root_path, class: 'btn btn-sm btn-success'
 
