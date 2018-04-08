@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   resources :families, only: [:show] do
     resources :members, only: [:new, :create, :destroy]
-    resources :tasks
+    resources :tasks do
+      resources :comments
+    end
+  end
+
+  resources :comments do
+    resources :comments
   end
 
   devise_for :users, controllers: {
