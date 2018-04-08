@@ -10,7 +10,9 @@ en:
       title: 'New Task'
     edit:
       title: 'Edit Task'
-
+    form:
+      tags:
+        placeholder: 'Enter a list of tags separated by commas'
   members:
     new:
       title: 'New Family Member'
@@ -18,13 +20,11 @@ en:
         enter_email: 'Enter Email'
       prompt:
         new_user: 'New User..'
-
   home:
     index:
       title: 'Dashboard'
       families: 'Families'
       tasks: 'Tasks'
-
   families:
     show:
       title: 'Family'
@@ -32,10 +32,16 @@ en:
       new_member: 'New Family Member'
       new_task: 'New Task'
       family_tasks: 'All Family Tasks'
-
   users:
     first_name: 'First Name'
     last_name: 'Last Name'
     email: 'Email'
     role: 'Role'
-
+  enumerize:
+    task:
+      state:
+        opened: 'Opened'
+        in_progress: 'In Progress'
+        paused: 'Paused'
+        finished: 'Finished'
+        closed: 'Closed'

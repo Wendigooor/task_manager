@@ -1,12 +1,13 @@
 class Task < ApplicationRecord
-  resourcify
+  extend Enumerize
 
-  # acts_as_taggable_on :tags
+  resourcify
+  acts_as_taggable
 
   belongs_to :author, class_name: :User
   belongs_to :assignee, class_name: :User, optional: true
 
-  enum state: %w(opened in_process paused finished closed)
+  enumerize :state, in: [:opened, :in_progress, :paused, :finished, :closed], default: :opened
 
   validates :description,
             :author,

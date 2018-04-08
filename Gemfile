@@ -39,6 +39,7 @@ gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'enumerize'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.7'

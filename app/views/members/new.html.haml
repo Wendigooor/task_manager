@@ -1,4 +1,5 @@
-%h3= t('.title')
+%h1= t('.title')
+
 = simple_form_for @user, url: family_members_path do |f|
   = f.input :id, collection: User.all - @family.users, label_method: :email, label: false, value_method: :id, prompt: t('.prompt.new_user'), required: false
   = f.input :email, required: true, label: false, placeholder: t('.placeholder.enter_email')

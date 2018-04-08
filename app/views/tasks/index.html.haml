@@ -1,15 +1,23 @@
-%h3
+%h1
   #{@family.name}
   = t('.title')
 
-%h4 Author Tasks
+%h3 Author Tasks
 
 .row
   - @author_tasks.each do |task|
     .task.col-md-2
       = task.truncated_description
       = task.assignee_first_name
-      = task.state
+      %p
+        %b State:
+        = task.state.text
+      %p
+        %b Tags:
+        = task.tag_list
+      %p
+        = link_to edit_family_task_path(@family, task) do
+          %i.glyphicon.glyphicon-edit
 
 %hr/
 

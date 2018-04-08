@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408145745) do
+ActiveRecord::Schema.define(version: 20180408171430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180408145745) do
     t.bigint "assignee_id"
     t.bigint "family_id"
     t.time "estimate"
-    t.integer "state"
+    t.string "state"
     t.boolean "public", default: true
     t.string "description"
     t.datetime "created_at", null: false
