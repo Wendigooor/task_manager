@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
-  include Registration
+
+  ROLES = %w(admin user)
 
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -14,6 +15,4 @@ class User < ApplicationRecord
   validates :first_name,
             :last_name,
             presence: true
-
-  ROLES = %w(admin user)
 end

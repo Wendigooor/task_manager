@@ -6,12 +6,12 @@ class MembersController < ApplicationController
   end
 
   def create
-    Registration.invite_member_to_family(params[:user], @family)
+    FamilyMemberInvitationService.new(params[:user], @family).perform
     redirect_to @family
   end
 
   def destroy
-    Registration.remove_member_from_family(params[:id], @family)
+    FamilyMemberRemoverService.new(params[:id], @family).perform
     redirect_to @family
   end
 

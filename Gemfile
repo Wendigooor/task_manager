@@ -45,8 +45,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 
 gem 'rolify'
 gem 'cancancan', '~> 2.0'
-
-gem 'rails-i18n', '~> 5.1'
+gem 'draper'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,14 +11,14 @@
       %th= t('users.last_name')
       %th= t('users.email')
       %th= t('users.role')
-      %th{colspan: '3'}
+      %th
   %tbody
-    - @family.users.each do |user|
+    - @users.each do |user|
       %tr
         %th= user.first_name
         %th= user.last_name
         %th= user.email
-        %th= user_role(user, @family)
+        %th= user.with_role(@family)
         %th
           = link_to family_member_path(@family, user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
             %i.glyphicon.glyphicon-remove
