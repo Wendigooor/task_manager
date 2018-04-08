@@ -1,24 +1,20 @@
-# README
+# Task Manager Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+- Ruby 2.3.1
+- Postgres 9.x
 
-* Ruby version
+## Setup
 
-* System dependencies
+    git clone git@gitlab.com:wendigooor/task_manager.git
+    cd task_manager
+    bin/setup
 
-* Configuration
+## Testing
 
-* Database creation
+To run the test suite regularly:
 
-* Database initialization
+    bin/rspec spec
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

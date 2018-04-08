@@ -6,6 +6,6 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
 
-  it { is_expected.to have_and_belong_to_many(:roles) }
-  it { is_expected.to have_many(:families).through(:roles) }
+  it { should have_and_belong_to_many(:roles) }
+  it { should have_many(:families).through(:roles) }
 end
