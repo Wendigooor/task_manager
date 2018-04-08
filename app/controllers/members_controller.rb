@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    Registration.remove_member_from_family(params[:user_id], @family)
+    Registration.remove_member_from_family(params[:id], @family)
     redirect_to @family
   end
 

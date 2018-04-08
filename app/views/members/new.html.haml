@@ -1,6 +1,6 @@
-%h3 New Family Member
+%h3= t('.title')
 = simple_form_for @user, url: family_members_path do |f|
-  = f.input :id, collection: User.all - @family.users, label_method: :email, label: false, value_method: :id, prompt: 'New User..', required: false
-  = f.input :email, required: true, label: false, placeholder: 'Enter Email'
+  = f.input :id, collection: User.all - @family.users, label_method: :email, label: false, value_method: :id, prompt: t('.prompt.new_user'), required: false
+  = f.input :email, required: true, label: false, placeholder: t('.placeholder.enter_email')
   = f.input :role, as: :radio_buttons, collection: User::ROLES, required: true, checked: User::ROLES.first
   = f.button :submit
