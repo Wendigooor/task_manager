@@ -1,7 +1,7 @@
 %h3= t('.title')
 
 %b= t('.families')
-- current_user.families.each_with_index do |family, index|
+- current_user.families.each do |family|
   %p= link_to family.name, family_path(family)
 
 %hr/

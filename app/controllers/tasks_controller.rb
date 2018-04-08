@@ -3,8 +3,10 @@ class TasksController < ApplicationController
   load_and_authorize_resource :task, through: :family, shallow: true
 
   def new
-    # @parent_families = current_user.roles.where(resource_type: "Family", name: "admin")
-    # @controllable_persons = Role.where(family_id: controllable_families.pluck(:id))
+  end
+
+  def index
+    @author_tasks = TaskDecorator.decorate_collection(current_user.author_tasks)
   end
 
   def create
@@ -20,7 +22,7 @@ class TasksController < ApplicationController
 private
 
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :tag_list)
   end
 
 end

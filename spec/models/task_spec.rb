@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  it { should validate_presence_of(:description) }
+  it { is_expected.to validate_presence_of(:description) }
+  it { is_expected.to validate_presence_of(:author) }
 
-  it { should belong_to(:author) }
-  it { should belong_to(:assignee) }
+  it { is_expected.to belong_to(:author) }
+  it { is_expected.to belong_to(:assignee) }
 end
