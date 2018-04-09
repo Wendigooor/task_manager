@@ -1,7 +1,4 @@
-= simple_form_for @task, url: family_tasks_path do |f|
-  - if @task.errors.any?
-    .alert.alert-danger
-      - @task.errors.full_messages.each do |msg|
-        %li= msg
+= simple_form_for [@family, @task] do |f|
   = f.input :description
+  = f.input :tag_list, input_html: { value: f.object.tag_list.to_s }
   = f.button :submit

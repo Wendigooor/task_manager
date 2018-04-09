@@ -3,28 +3,22 @@ en:
   tasks:
     index:
       title: 'Tasks'
-      new_task: 'New Task'
+      new: 'New Task'
       back_to_family: 'Back to Family'
       dashboard: 'Dashboard'
+      author_tasks: 'Author Tasks'
     new:
       title: 'New Task'
     edit:
       title: 'Edit Task'
-
   members:
     new:
       title: 'New Family Member'
-      placeholder:
-        enter_email: 'Enter Email'
-      prompt:
-        new_user: 'New User..'
-
   home:
     index:
       title: 'Dashboard'
       families: 'Families'
       tasks: 'Tasks'
-
   families:
     show:
       title: 'Family'
@@ -32,10 +26,36 @@ en:
       new_member: 'New Family Member'
       new_task: 'New Task'
       family_tasks: 'All Family Tasks'
-
-  users:
-    first_name: 'First Name'
-    last_name: 'Last Name'
-    email: 'Email'
-    role: 'Role'
-
+      dashboard: 'Dashboard'
+  comments:
+    create:
+      notice: 'Your comment was successfully created!'
+  helpers:
+    submit:
+      comment:
+        create: 'Create comment'
+  enumerize:
+    task:
+      state:
+        opened: 'Opened'
+        in_progress: 'In Progress'
+        paused: 'Paused'
+        finished: 'Finished'
+        closed: 'Closed'
+  activerecord:
+    attributes:
+      user:
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        email: 'Email'
+        role: 'Role'
+      task:
+        state: 'State:'
+        tag_list: 'Tag List:'
+        description: 'Description:'
+  messages:
+    destruction_confirmation: 'Are you sure?'
+    prompts:
+      user:
+        new:
+          id: 'New User..'

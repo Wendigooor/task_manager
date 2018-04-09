@@ -1,0 +1,7 @@
+%li
+  %b= comment.body
+  \-
+  %small= comment.created_at
+  = render 'comments/form', object: [comment, Comment.new]
+  %ul
+    = render comment.comments

@@ -1,16 +1,16 @@
-%h3
+%h1
   = t('.title')
   %i= @family.name
 
-%h3= t('.members')
+%h2= t('.members')
 
 %table.table.table-striped
   %thead
     %tr
-      %th= t('users.first_name')
-      %th= t('users.last_name')
-      %th= t('users.email')
-      %th= t('users.role')
+      %th= User.human_attribute_name :first_name
+      %th= User.human_attribute_name :last_name
+      %th= User.human_attribute_name :email
+      %th= User.human_attribute_name :role
       %th
   %tbody
     - @users.each do |user|
@@ -20,7 +20,7 @@
         %th= user.email
         %th= user.with_role(@family)
         %th
-          = link_to family_member_path(@family, user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do
+          = link_to family_member_path(@family, user), method: :delete, data: { confirm: t('messages.destruction_confirmation') }, class: 'btn btn-sm btn-danger' do
             %i.glyphicon.glyphicon-remove
 
 
@@ -28,4 +28,4 @@
 %p= link_to t('.new_member'), new_family_member_path(@family), class: 'btn btn-sm btn-primary'
 %p= link_to t('.new_task'), new_family_task_path(@family), class: 'btn btn-sm btn-primary'
 %p= link_to t('.family_tasks'), family_tasks_path(@family), class: 'btn btn-sm btn-primary'
-%p= link_to t('home.index.title'), root_path, class: 'btn btn-sm btn-success'
+%p= link_to t('.dashboard'), root_path, class: 'btn btn-sm btn-success'

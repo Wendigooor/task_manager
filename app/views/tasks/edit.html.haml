@@ -1,3 +1,9 @@
-%h3= t('.title')
+%h1= t('.title')
 
 = render 'form'
+
+%hr/
+= render partial: @task.comments
+
+%hr/
+= render partial: 'comments/form', locals: { object: [@family, @task, Comment.new] }
