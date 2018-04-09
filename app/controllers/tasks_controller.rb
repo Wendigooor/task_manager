@@ -5,13 +5,17 @@ class TasksController < ApplicationController
   def new
   end
 
+  def edit
+    @task = Task.includes(comments: :comments).find(params[:id])
+  end
+
   def index
-    @author_tasks = TaskDecorator.decorate_collection(current_user.author_tasks)
+    @author_tasks = current_user.author_tasks
   end
 
   def create
     @task.author = current_user
-    @task.status = :opened
+    @task.state = :opened
 
     if @task.save
       redirect_to family_tasks_path(@family)

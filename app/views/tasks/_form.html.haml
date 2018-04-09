@@ -1,4 +1,4 @@
 = simple_form_for [@family, @task] do |f|
   = f.input :description
-  = f.input :tag_list, input_html: { value: f.object.tag_list.to_s }, placeholder: t('.tags.placeholder')
+  = f.input :tag_list, input_html: { value: f.object.tag_list.to_s }
   = f.button :submit

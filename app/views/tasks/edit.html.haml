@@ -3,11 +3,7 @@
 = render 'form'
 
 %hr/
-= render partial: 'comments', locals: { comments: @task.comments, task: @task }
+= render partial: @task.comments
+
 %hr/
-
-= simple_form_for [@family, @task, Comment.new] do |f|
-  = f.text_area :body
-  = f.hidden_field :task_id, value: @task.id
-  = f.submit
-
+= render partial: 'comments/form', locals: { object: [@family, @task, Comment.new] }

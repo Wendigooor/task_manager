@@ -16,6 +16,7 @@ class Ability
 
   def user
     can :edit, Task, assignee_id: @user.id
+    can :read, Task, family_id: user_family_ids
     can :read, Family, id: user_family_ids
   end
 

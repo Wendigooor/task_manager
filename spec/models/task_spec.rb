@@ -6,4 +6,7 @@ RSpec.describe Task, type: :model do
 
   it { is_expected.to belong_to(:author) }
   it { is_expected.to belong_to(:assignee) }
+  it { is_expected.to belong_to(:family) }
+
+  it { is_expected.to have_many(:comments) }
 end

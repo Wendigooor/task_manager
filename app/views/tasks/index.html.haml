@@ -2,18 +2,18 @@
   #{@family.name}
   = t('.title')
 
-%h3 Author Tasks
+%h2= t('.author_tasks')
 
 .row
   - @author_tasks.each do |task|
     .task.col-md-2
-      = task.truncated_description
+      = task.description.truncate(20)
       = task.assignee_first_name
       %p
-        %b State:
+        %b= Task.human_attribute_name :state
         = task.state.text
       %p
-        %b Tags:
+        %b= Task.human_attribute_name :tag_list
         = task.tag_list
       %p
         = link_to edit_family_task_path(@family, task) do
@@ -28,7 +28,7 @@
       = user.email
 
 %hr/
-%p= link_to t('.new_task'), new_family_task_path(@family), class: 'btn btn-sm btn-primary'
+%p= link_to t('.new'), new_family_task_path(@family), class: 'btn btn-sm btn-primary'
 %p= link_to t('.back_to_family'), family_path(@family), class: 'btn btn-sm btn-success'
 %p= link_to t('.dashboard'), root_path, class: 'btn btn-sm btn-success'
 
