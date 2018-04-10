@@ -35,3 +35,13 @@ first_comment_reply = first_comment.comments.create!(
   author: admin,
   body: 'No, it will be on this week!'
 )
+
+%w[house outdoor].each do |category_name|
+  category = Category.create!(name: category_name)
+  %w[food trip room].each do |subcategory_name|
+    subcategory = category.children.create!(name: subcategory_name)
+    %w[clean remove fix].each do |sub_subcategory_name|
+      subcategory.children.create!(name: sub_subcategory_name)
+    end
+  end
+end

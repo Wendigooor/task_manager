@@ -6,7 +6,15 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.includes(comments: :comments).find(params[:id])
+    @task = Task.includes(:categories, comments: :comments).find(params[:id])
+    @task_categories = @task.categories
+    @first_task_category = @task_categories.find_by(parent: nil)
+    @second_task_category = @task_categories.find_by(parent: @first_task_category)
+    @third_task_category = @task_categories.where.not(parent: nil).find_by(parent: @second_task_category)
+
+    @first_categories = Category.roots
+    @second_categories = Category.where(parent: @first_task_category)
+    @third_categories = Category.where(parent: @second_task_category)
   end
 
   def index
@@ -26,6 +34,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update_attributes(task_params)
+      @task.category_ids = params[:task][:categories].values
       redirect_to family_tasks_path(@family)
     else
       render :edit

@@ -1,4 +1,9 @@
 = simple_form_for [@family, @task] do |f|
   = f.input :description
   = f.input :tag_list, input_html: { value: f.object.tag_list.to_s }
+  - if f.object.persisted?
+    = f.simple_fields_for :categories do |c|
+      = c.input :first_category_id, collection: @first_categories, label_method: :name, label: false, value_method: :id, include_blank: true, input_html: { id: :first_category_id, data: { url: dynamic_select_categories_path(':category_id'), target: '#second_category_id' } }, selected: @first_task_category&.id, required: false
+      = c.input :second_category_id, collection: @second_categories, label_method: :name, label: false, value_method: :id, include_blank: true, input_html: { id: :second_category_id, data: { url: dynamic_select_categories_path(':category_id'), target: '#third_category_id' } }, selected: @second_task_category&.id, required: false, disabled: @first_task_category.nil?
+      = c.input :third_category_id, collection: @third_categories, label_method: :name, label: false, value_method: :id, include_blank: true, input_html: { id: :third_category_id }, selected: @third_task_category&.id, required: false, disabled: @second_task_category.nil?
   = f.button :submit
