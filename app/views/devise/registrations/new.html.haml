@@ -1,4 +1,4 @@
-%h2 Sign up
+%h2= t('.title')
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .form-inputs
@@ -9,9 +9,9 @@
     = f.input :password_confirmation, required: true
     = simple_fields_for :family do |o|
       = o.label :family
-      = o.input :id, collection: Family.all, label_method: :name, label: false, value_method: :id, prompt: "New Family..", required: false
+      = o.input :id, collection: Family.all, label_method: :name, label: false, value_method: :id, prompt: :translate, required: false
       = o.input :name, placeholder: 'Enter Family Name', label: false, required: true
   .form-actions
-    = f.button :submit, "Sign up", class: 'btn btn-success'
+    = f.button :submit, t('.title'), class: 'btn btn-success'
 
 = render "devise/shared/links"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410170745) do
+ActiveRecord::Schema.define(version: 20180411140816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180410170745) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rating"
     t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["family_id"], name: "index_tasks_on_family_id"
@@ -123,6 +124,10 @@ ActiveRecord::Schema.define(version: 20180410170745) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.string "nickname"
+    t.date "birthday"
+    t.string "address"
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true

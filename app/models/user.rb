@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   rolify
+  mount_uploader :avatar, AvatarUploader
 
   ROLES = %w(admin user)
 

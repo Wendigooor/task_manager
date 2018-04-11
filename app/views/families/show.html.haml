@@ -9,16 +9,22 @@
     %tr
       %th= User.human_attribute_name :first_name
       %th= User.human_attribute_name :last_name
+      %th= User.human_attribute_name :nickname
+      %th= User.human_attribute_name :birthday
       %th= User.human_attribute_name :email
       %th= User.human_attribute_name :role
+      %th= User.human_attribute_name :rating
       %th
   %tbody
     - @users.each do |user|
       %tr
         %th= user.first_name
         %th= user.last_name
+        %th= user.nickname
+        %th= user.birthday_formatted
         %th= user.email
         %th= user.with_role(@family)
+        %th= user.rating
         %th
           = link_to family_member_path(@family, user), method: :delete, data: { 'remove-id': user.id, confirm: t('messages.destruction_confirmation') }, class: 'btn btn-sm btn-danger' do
             %i.glyphicon.glyphicon-remove

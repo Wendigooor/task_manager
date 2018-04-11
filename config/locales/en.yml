@@ -47,8 +47,11 @@ en:
       user:
         first_name: 'First Name'
         last_name: 'Last Name'
+        nickname: 'Nickname'
+        birthday: 'Birthday'
         email: 'Email'
         role: 'Role'
+        rating: 'Rating'
       task:
         state: 'State:'
         tag_list: 'Tag List:'

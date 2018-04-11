@@ -1,44 +1,37 @@
 %h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  #{t('.edit')} #{resource_name.to_s.humanize}
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f|
   = devise_error_messages!
-  .field
-    = f.label :first_name
+  .form-inputs
+    = f.input :first_name, autofocus: true
+    = f.input :last_name
+    = f.input :nickname
+    = f.input :birthday, as: :date_picker
+    = f.input :email, autofocus: true, autocomplete: "email"
+    - if current_user.avatar.url.present?
+      = image_tag(current_user.avatar.url) 
+      = f.label :remove_avatar
+      = f.check_box :remove_avatar 
+    = f.file_field :avatar  
+    = f.hidden_field :avatar_cache
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        #{t('.currently_waiting_confirmation_for')}: #{resource.unconfirmed_email}
+    %i= t('.leave_blank_if_no_change')
     %br/
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
+    = f.input :password, autocomplete: "off"
     - if @minimum_password_length
       %br/
       %em
         = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
+        = t('.characters_minimum')
+    = f.input :password_confirmation, autocomplete: "off"
+    %i= t('.we_need_password_to_confirm')
     %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
+    = f.input :current_password, autocomplete: "off"
+  .form-actions
+    = f.submit t('.update')
+%h3= t('.cancel_my_account')
 %p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+  #{t('.unhappy')} #{button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('messages.destruction_confirmation') }, method: :delete}
 = link_to "Back", :back
