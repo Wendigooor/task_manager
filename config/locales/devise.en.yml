@@ -44,6 +44,23 @@ en:
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
+      new:
+        title: "Sign up"
+      edit:
+        edit: "Edit"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
+        cancel_my_account: "Cancel my account"
+        update: "Update"
+        back: "Back"
+        are_you_sure: "Are you sure?"
+        unhappy: "Unhappy?"
+        characters_minimum: "characters minimum"
+        currently_waiting_confirmation_for: "Currently waiting confirmation for"
+        we_need_password_to_confirm: "(we need your current password to confirm your changes)"
+        leave_blank_if_no_change: "(leave blank if you don't want to change it)"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
@@ -62,3 +79,4 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+

@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/derekprior/momentjs-rails.git
+  revision: e2b2dd166b121ded02cdcc54f49fa1f0146c7094
+  specs:
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
+
+GIT
+  remote: https://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -66,6 +82,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -151,6 +171,9 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -304,8 +327,10 @@ DEPENDENCIES
   byebug
   cancancan (~> 2.0)
   capybara (~> 2.13)
+  carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   database_cleaner (~> 1.5)
+  datetimepicker-rails!
   devise
   devise_invitable (~> 1.7.0)
   draper
@@ -317,6 +342,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  momentjs-rails (~> 2.9)!
   omniauth-facebook
   pg (>= 0.18, < 2.0)
   pry

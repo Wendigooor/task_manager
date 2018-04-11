@@ -40,6 +40,9 @@ gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'enumerize'
+gem 'carrierwave', '~> 1.0'
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
