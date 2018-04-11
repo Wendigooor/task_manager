@@ -3,10 +3,12 @@ class TasksController < ApplicationController
   load_and_authorize_resource :task, through: :family, shallow: true
 
   def new
+    @categories = []
   end
 
   def edit
-    @task = Task.includes(comments: :comments).find(params[:id])
+    @task = Task.includes(:categories, comments: :comments).find(params[:id])
+    @categories = @task.categories.sort_by(&:tree_level)
   end
 
   def index
@@ -18,6 +20,7 @@ class TasksController < ApplicationController
     @task.state = :opened
 
     if @task.save
+      @task.category_ids = params[:task][:categories].values
       redirect_to family_tasks_path(@family)
     else
       render :new
@@ -26,6 +29,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update_attributes(task_params)
+      @task.category_ids = params[:task][:categories].values
       redirect_to family_tasks_path(@family)
     else
       render :edit

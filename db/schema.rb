@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408181250) do
+ActiveRecord::Schema.define(version: 20180410170745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "parent_id"
+  end
+
+  create_table "categories_tasks", id: false, force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id", "task_id"], name: "index_categories_tasks_on_category_id_and_task_id"
+    t.index ["task_id", "category_id"], name: "index_categories_tasks_on_task_id_and_category_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "author_id"

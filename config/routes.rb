@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :dynamic_select do
+    get ':category_id/categories', to: 'categories#index', as: 'categories'
+  end
+
   resources :families, only: [:show] do
     resources :members, only: [:new, :create, :destroy]
     resources :tasks do

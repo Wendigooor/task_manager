@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   belongs_to :family
 
   has_many :comments, as: :commentable, dependent: :destroy
+  has_and_belongs_to_many :categories, join_table: :categories_tasks
 
   enumerize :state, in: [:opened, :in_progress, :paused, :finished, :closed]
 
